@@ -23,22 +23,25 @@ int main(int argc, char* argv[]) {
 	Events events;
 	Mouse mouse = Mouse();
 
-	bool running;
+	bool running = true;
 	double dt;
 
-	renderer.clear({0, 0, 0});
-	bg_img.render(bg_img.get_rect());
+	renderer.set_blend_mode(SDL_BLENDMODE_BLEND);
+	fow_tex.set_blend_mode(SDL_BLENDMODE_MOD);
 
 	while (running) {
 		dt = clock.tick(60);
 
 		events.process_events(running, EVENT_KEYS, mouse);
 
-		renderer.set_target(fow_tex);
 		renderer.clear({0, 0, 0});
-		renderer.draw_circle({400, 300}, 200, {255, 255, 255, 255});
-		renderer.present();
+		bg_img.render(bg_img.get_rect());
+
+		renderer.set_target(fow_tex);
+		renderer.clear({200, 200, 200, 255});
+		renderer.draw_circle(mouse.pos, 100, {255, 255, 255, 255});
 		renderer.set_target();
+		fow_tex.render(fow_tex.get_rect());
 		renderer.present();
 	}
 
