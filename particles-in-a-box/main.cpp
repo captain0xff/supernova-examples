@@ -10,7 +10,8 @@
 #include <cmath>
 #include <vector>
 
-#include "../supernova/engine.h"
+#include <supernova/constants.h>
+#include <supernova/engine.h>
 
 
 using namespace std;
@@ -52,7 +53,7 @@ void Particle::update(double dt) {
 }
 
 void Particle::draw(Renderer &renderer) {
-	renderer.draw_circle(pos, radius, {colour_factor(), 255 - colour_factor(), 0, 255});
+	renderer.draw_circle({pos, radius}, {colour_factor(), 255 - colour_factor(), 0, 255});
 }
 
 void Particle::collide(Particle &particle) {
@@ -94,9 +95,9 @@ double Particle::colour_factor() {
 }
 
 
-int main() {
+int main(int, char **) {
 
-	Init();
+	Engine engine;
 
 	Window window("Particles in a box", SCREENW, SCREENH);
 	Renderer renderer(window);
@@ -113,7 +114,7 @@ int main() {
 	while (running) {
 		dt = clock.tick(60);
 
-		events.process_events(running, EVENT_KEYS, mouse);
+		running = events.process_events(&EVENT_KEYS, &mouse);
 
 		if (mouse.buttons["LEFT"].pressed) {
 			Particle particle = Particle(mouse.pos);
@@ -136,8 +137,6 @@ int main() {
 		}
 		renderer.present();
 	}
-
-	Quit();
 
     return 0;
 }
