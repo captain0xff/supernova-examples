@@ -40,7 +40,7 @@ void relay(const IPaddress ip) {
 		if (socket.recv(buffer, 1024) > 0) {
 			if (string(buffer) == "quit")
 				break;
-			cout << client_ip.host << ":" << client_ip.port << " -> " << buffer << endl;
+			cout << NetUtils::get_formatted_ipv4_host(client_ip.host) << ":" << client_ip.port << " -> " << buffer << endl;
 		}
 	}
 }

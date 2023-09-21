@@ -32,13 +32,15 @@ void chat() {
 
 	while (!client.accept(server));
 	remote_ip = server.get_peer_address();
-	SDL_Log("Connection established with server! Address-> %u:%i", remote_ip->host, remote_ip->port);
+	SDL_Log(
+		"Connection established with server! Address-> %s:%i",
+		NetUtils::get_formatted_ipv4_host(remote_ip->host).c_str(),
+		remote_ip->port
+	);
 
 	while (msg != "quit") {
 		cout << "Message: ";
 		getline(cin, msg);
-
-		SDL_Log("%s", msg.c_str());
 
 		server.send(msg);
 	}
