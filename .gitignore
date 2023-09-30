@@ -32,8 +32,8 @@
 *.app
 
 # Build directory
-/build
-/.cache
+build
+.cache
 
 # CMake Generated files
 CMakeFiles
