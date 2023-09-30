@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-project(basic-sound)
+project(basic-font)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -10,4 +10,4 @@ else ()
 	link_libraries(supernova)
 endif()
 
-add_executable(main main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)

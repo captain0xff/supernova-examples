@@ -1,6 +1,6 @@
-#include <algorithm>
+#include <supernova/engine.h>
+#include <supernova/enums.h>
 
-#include <supernova\engine.h>
 
 using namespace std;
 
@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int, char**) {
 
-	Init();
+	Engine engine;
 
 	Window window("test", 800, 600);
 	Renderer renderer(window);
@@ -19,7 +19,7 @@ int main(int, char**) {
 	bool running = true;
 	double dt, volume;
 
-	Mouse mouse({"LEFT", "RIGHT"});
+	Mouse mouse(LEFT);
 
 	Mixer::open_audio_device();
 	Mixer::allocate_channels(1);
@@ -40,7 +40,7 @@ int main(int, char**) {
 
 		running = events.process_events(&EVENT_KEYS, &mouse);
 
-		if (mouse.buttons["LEFT"].pressed)
+		if (mouse.buttons[LEFT].pressed)
 			sound.toggle();
 
 		if (mouse.vert_wheel != 0) {
@@ -59,8 +59,6 @@ int main(int, char**) {
 		renderer.draw_rect(volume_bar_fg, {100, 130, 230});
 		renderer.present();
 	}
-
-	Quit();
 
 	return 0;
 }

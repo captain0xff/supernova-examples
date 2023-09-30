@@ -10,4 +10,4 @@ else ()
 	link_libraries(supernova)
 endif()
 
-add_executable(main main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)

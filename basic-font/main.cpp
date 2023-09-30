@@ -1,5 +1,7 @@
 #include <supernova/engine.h>
 #include <supernova/constants.h>
+#include <supernova/enums.h>
+
 
 using namespace std;
 
@@ -18,8 +20,6 @@ int main(int, char**) {
 	bool running = true;
 	double dt, volume;
 
-	Mouse mouse({"LEFT", "RIGHT"});
-
 	Font font("font.ttf", 30);
 	font.wrap_alignment(TTF_WRAPPED_ALIGN_CENTER);
 	Texture static_text = font.create_text(renderer, "Font Example\nSDL Powered", GREEN);
@@ -31,7 +31,7 @@ int main(int, char**) {
 	while (running) {
 		dt = clock.tick(60);
 
-		running = events.process_events(&EVENT_KEYS, &mouse);
+		running = events.process_events(&EVENT_KEYS);
 
 		renderer.clear({0, 0, 0});
 		static_text.render(static_text_rect);

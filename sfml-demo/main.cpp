@@ -1,8 +1,6 @@
 #define SCREENW 800
 #define SCREENH 600
 
-#include <iostream>
-
 #define WIN_32_LEAN_AND_MEAN
 #include <windows.h>
 #include <sfml/Graphics.hpp>
@@ -18,7 +16,7 @@ using namespace std;
 
 int main() {
 
-	Init();
+	Engine engine;
 
 	Window window("SFML demo", SCREENW, SCREENH);
 	Renderer renderer(window);
@@ -46,10 +44,7 @@ int main() {
 	while (running) {
 		dt = clock.tick(60);
 
-		events.process_events(running, EVENT_KEYS);
-
-		if (EVENT_KEYS["UP"].pressed)
-			cout << "UP" << endl;
+		running = events.process_events(&EVENT_KEYS);
 
 		win.clear();
 		win.draw(shape, &shader);

@@ -6,12 +6,12 @@
 
 #define MAX_VEL 100
 
-#include <iostream>
 #include <cmath>
 #include <vector>
 
 #include <supernova/constants.h>
 #include <supernova/engine.h>
+#include <supernova/enums.h>
 
 
 using namespace std;
@@ -53,7 +53,7 @@ void Particle::update(double dt) {
 }
 
 void Particle::draw(Renderer &renderer) {
-	renderer.draw_circle({pos, radius}, {colour_factor(), 255 - colour_factor(), 0, 255});
+	renderer.draw_circle({pos, radius}, {Uint8(colour_factor()), Uint8(255 - colour_factor()), 0, 255});
 }
 
 void Particle::collide(Particle &particle) {
@@ -104,7 +104,7 @@ int main(int, char **) {
 
 	Clock clock;
 	Events events;
-	Mouse mouse = Mouse({"LEFT"});
+	Mouse mouse = Mouse(LEFT);
 
 	bool running = true;
 	double dt;
@@ -116,7 +116,7 @@ int main(int, char **) {
 
 		running = events.process_events(&EVENT_KEYS, &mouse);
 
-		if (mouse.buttons["LEFT"].pressed) {
+		if (mouse.buttons[LEFT].pressed) {
 			Particle particle = Particle(mouse.pos);
 			particles.push_back(particle);
 		}

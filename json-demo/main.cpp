@@ -1,8 +1,6 @@
 #include <supernova/engine.h>
 #include <supernova/constants.h>
 
-#include <iostream>
-
 #include "json.h"
 
 
@@ -25,11 +23,13 @@ int main(int argc, char* argv[]) {
 
 	IO f2("data.json");
 	json data = json::parse(f2.read());
-	cout << data["name"] << endl;
-	cout << data["id"] << endl;
-	cout << data["balance"] << endl;
+	string name = data["name"];
+	SDL_Log("Name: %s", name.c_str());
+	int id = data["id"];
+	SDL_Log("ID: %s", name.c_str());
+	double balance = data["balance"];
+	SDL_Log("Balance: %f", balance);
 	f2.close();
-
 
 	return 0;
 }
