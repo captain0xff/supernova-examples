@@ -10,7 +10,7 @@ int main(int, char**) {
 
 	Engine engine;
 
-	Window window("test", 800, 600);
+	Window window("test", {800, 600});
 	Renderer renderer(window);
 
 	Clock clock;

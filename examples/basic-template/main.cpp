@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
 
 	Engine engine;
 
-	Window window("Basic Template", 800, 600);
+	Window window("Basic Template", {800, 600});
 	Renderer renderer(window);
 
 	Clock clock;

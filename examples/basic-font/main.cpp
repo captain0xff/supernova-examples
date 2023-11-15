@@ -11,7 +11,7 @@ int main(int, char**) {
 
 	Engine engine;
 
-	Window window("Font example", 800, 600);
+	Window window("Font example", {800, 600});
 	Renderer renderer(window);
 
 	Clock clock;

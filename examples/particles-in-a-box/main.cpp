@@ -99,7 +99,7 @@ int main(int, char **) {
 
 	Engine engine;
 
-	Window window("Particles in a box", SCREENW, SCREENH);
+	Window window("Particles in a box", {SCREENW, SCREENH});
 	Renderer renderer(window);
 
 	Clock clock;

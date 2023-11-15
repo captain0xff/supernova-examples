@@ -11,9 +11,9 @@ int main(int argc, char* argv[]) {
 
 	Engine engine;
 
-	int windowx = 800, windowy = 600;
+	const IVector WINDOW_SIZE = {800, 600};
 
-	Window window("ImGUI Demo", windowx, windowy, SDL_WINDOW_RESIZABLE);
+	Window window("ImGUI Demo", WINDOW_SIZE, SDL_WINDOW_RESIZABLE);
 	Renderer renderer(window);
 
 	Clock clock;

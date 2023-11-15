@@ -7,13 +7,13 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-	const int SCREENW = 800, SCREENH = 600;
+	const IVector WINDOW_SIZE = {800, 600};
 
-	Window window("Fog of War", SCREENW, SCREENH);
+	Window window("Fog of War", WINDOW_SIZE);
 	Renderer renderer(window);
 
 	Texture bg_img(renderer, "image.png");
-	Texture fow_tex(renderer, Vector{800, 600});
+	Texture fow_tex(renderer, WINDOW_SIZE);
 
 	Clock clock;
 	Events events;
