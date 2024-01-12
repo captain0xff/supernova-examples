@@ -27,7 +27,6 @@ void chat() {
 	NetUtils::resolve_host(ip, 2000);
 
 	TCPSocket client(ip), server;
-	char buffer[512];
 	string msg;
 
 	while (!client.accept(server));
