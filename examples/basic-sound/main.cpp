@@ -21,7 +21,7 @@ int main(int, char**) {
 
 	Mouse mouse(LEFT);
 
-	Mixer::open_audio_device();
+	Mixer mixer;
 	Mixer::allocate_channels(1);
 
 	Sound sound("sound.wav");
@@ -31,7 +31,7 @@ int main(int, char**) {
 	Rect volume_bar_bg{0, 0, 400, 75};
 	volume_bar_bg.center({400, 300});
 
-	int volume_bar_fg_length = 380;
+	float volume_bar_fg_length = 380;
 	Rect volume_bar_fg{0, 0, volume_bar_fg_length, 55};
 	volume_bar_fg.center(volume_bar_bg.center());
 

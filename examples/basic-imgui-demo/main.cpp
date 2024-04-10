@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 	IVector pos = {0, 0};
 
 	Rect basic_rect = {0, 0, 100, 100};
-	vector<Rect> rects;
+	vector<IRect> rects;
 
 	while (running) {
 		dt = clock.tick(60);

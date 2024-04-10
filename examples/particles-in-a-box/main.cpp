@@ -23,7 +23,7 @@ class Particle {
 		const int DENSITY = 3; // In mass/pixel^2
 		const double MAX_K = 0.5*DENSITY*PI*MAX_RAD*MAX_RAD*MAX_VEL;
 
-		int radius;
+		float radius;
 		float mass;
 		Vector pos;
 		Vector vel;

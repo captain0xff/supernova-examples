@@ -1,3 +1,4 @@
 # TODO
-* Port the old engine example.
-* Add a basic template.
+* Fix the server discovery example.
+* Add the camera api example.
+* Add a post processing shader example.
