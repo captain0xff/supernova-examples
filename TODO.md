@@ -1,4 +1,3 @@
 # TODO
 * Fix the server discovery example.
-* Add the camera api example.
-* Add a post processing shader example.
+* Add advanced imgui demo (Idea: runtime shader hotreloader and editor)

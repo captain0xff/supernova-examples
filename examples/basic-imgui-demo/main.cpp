@@ -1,6 +1,6 @@
 #include <supernova/engine.h>
 #include <supernova/constants.h>
-#include <supernova/super_gui.h>
+#include <supernova/supergui.h>
 
 
 using namespace std;
