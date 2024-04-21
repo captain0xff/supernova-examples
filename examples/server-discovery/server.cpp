@@ -8,9 +8,9 @@ using namespace std;
 
 
 
-IPaddress server_discovery(const string keyword) {
-	UDPSocket dscv_socket(2000);
-	Packet packet(32);
+string server_discovery(const string keyword) {
+	DatagramSocket dscv_socket(2000);
+	Packet packet;
 
 	string msg;
 
@@ -24,23 +24,24 @@ IPaddress server_discovery(const string keyword) {
 		}
 	}
 
-	return packet.packet->address;
+	return dscv_socket.address.get_string();
 }
 
 
-void relay(const IPaddress ip) {
-	IPaddress client_ip;
-	NetUtils::resolve_host(client_ip, 2000);
-	client_ip.host = ip.host;
-	TCPSocket socket(client_ip);
+void relay(string addr) {
+	// IPaddress client_ip;
+	// NetUtils::resolve_host(client_ip, 2000);
+	// client_ip.host = ip.host;
+	// TCPSocket socket(client_ip);
+	StreamSocket socket(2000, addr);
 
 	char buffer[512];
 
 	while (true) {
-		if (socket.recv(buffer, 1024) > 0) {
+		if (socket.read(buffer, 1024) > 0) {
 			if (string(buffer) == "quit")
 				break;
-			cout << NetUtils::get_formatted_ipv4_host(client_ip.host) << ":" << client_ip.port << " -> " << buffer << endl;
+			cout << socket.address.get_string() << ":" << socket.port << " -> " << buffer << endl;
 		}
 	}
 }
@@ -52,8 +53,8 @@ int main(int argc, char* argv[]) {
 
 	const string KEYWORD = "123456";
 
-	IPaddress ip = server_discovery(KEYWORD);
-	relay(ip);
+	string addr = server_discovery(KEYWORD);
+	relay(addr);
 
 	return 0;
 }

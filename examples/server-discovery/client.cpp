@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include <supernova/core.h>
+#include <supernova/print.h>
 #include <supernova/networking.h>
 
 
@@ -9,39 +10,52 @@ using namespace std;
 
 
 void server_discovery(const string keyword) {
-	UDPSocket dscv_socket(0);
-	IPaddress srvadd;
+	DatagramSocket dscv_socket(0, "127.0.0.1");
+	Address addr("255.255.255.255");
+	int status;
+	while ((status = dscv_socket.address.get_status()) < 1) {
+		if (status == -1)
+			print("Error!");
+		else
+			print(status);
+	}
 
-	NetUtils::resolve_host(srvadd, 2000, "255.255.255.255");
+	while ((status = addr.get_status()) < 1) {
+		if (status == -1)
+			print("Error!");
+		else
+			print(status);
+	}
 
-	Packet packet(32, srvadd);
+	Packet packet;
 	packet << keyword;
+	print("cool");
 
-	dscv_socket.send(packet);
+	dscv_socket.send(2000, dscv_socket.address, packet);
 }
 
 
 void chat() {
-	IPaddress ip, *remote_ip;
-
-	NetUtils::resolve_host(ip, 2000);
-
-	TCPSocket client(ip), server;
+	StreamServer server(2000);
+	StreamSocket socket;
 	string msg;
 
-	while (!client.accept(server));
-	remote_ip = server.get_peer_address();
+	while (true) {
+		if (server.is_new_connection_available())
+			socket = server.accept_client();
+	}
+
 	SDL_Log(
 		"Connection established with server! Address-> %s:%i",
-		NetUtils::get_formatted_ipv4_host(remote_ip->host).c_str(),
-		remote_ip->port
+		socket.address.get_string().c_str(),
+		socket.port
 	);
 
 	while (msg != "quit") {
 		cout << "Message: ";
 		getline(cin, msg);
 
-		server.send(msg);
+		socket.write(msg);
 	}
 }
 
