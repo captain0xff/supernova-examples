@@ -192,6 +192,9 @@ int main(int argc, char *argv[]) {
 		return false;
 	};
 
+	Texture tex(renderer2, "image.bmp");
+
+	int start = SDL_GetTicks();
 	while (rng) {
 		dt = clock.tick(60);
 
@@ -218,9 +221,9 @@ int main(int argc, char *argv[]) {
 
 		canvas.begin();
 		renderer2.clear(WHITE);
-		renderer2.draw_rect({300, 300, 100, 100}, GREEN);
+		tex.render({0, 0, 800, 600});
 
-		shader.set_float("pos", randint(10));
+		shader.set_int("time", (int)SDL_GetTicks() - start);
 		canvas.draw(shader);
 	}
 
