@@ -5,9 +5,8 @@ project(basic-imgui-demo)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (WIN32)
-	link_libraries(mingw32 SDL3 supernova imgui supergui)
-else ()
-	link_libraries(SDL3 supernova imgui supergui)
+	link_libraries(mingw32)
 endif()
+link_libraries(SDL3 supernova imgui supergui)
 
 add_executable(${PROJECT_NAME} main.cpp)

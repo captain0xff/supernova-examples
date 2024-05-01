@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 
 	const string KEYWORD = "123456";
 
-	server_discovery(KEYWORD);
+	// server_discovery(KEYWORD);
 	chat();
 
 	return 0;

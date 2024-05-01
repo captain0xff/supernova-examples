@@ -53,8 +53,8 @@ int main(int argc, char* argv[]) {
 
 	const string KEYWORD = "123456";
 
-	string addr = server_discovery(KEYWORD);
-	relay(addr);
+	// string addr = server_discovery(KEYWORD);
+	relay("127.0.0.1");
 
 	return 0;
 }

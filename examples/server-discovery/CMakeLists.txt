@@ -5,10 +5,9 @@ project(server-discovery-demo)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (WIN32)
-	link_libraries(mingw32 SDL3 supernova)
-else ()
-	link_libraries(SDL3 supernova)
+	link_libraries(mingw32)
 endif()
+link_libraries(SDL3 supernova)
 
 add_executable(server server.cpp)
 add_executable(client client.cpp)

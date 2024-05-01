@@ -5,7 +5,7 @@ project(basic-font)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (WIN32)
-	link_libraries(mingw32 SDL2main SDL2 supernova)
+	link_libraries(mingw32 SDL3 supernova)
 else ()
 	link_libraries(supernova)
 endif()
