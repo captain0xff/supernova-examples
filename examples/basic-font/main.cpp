@@ -31,7 +31,7 @@ int main(int, char**) {
 	while (running) {
 		dt = clock.tick(60);
 
-		running = events.process_events(&EVENT_KEYS);
+		running = events.process_events();
 
 		renderer.clear({0, 0, 0});
 		static_text.render(static_text_rect);

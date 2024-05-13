@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 	while (rng) {
 		dt = clock.tick(60);
 
-		rng = events.process_events(&EVENT_KEYS, &mouse);
+		rng = events.process_events(nullptr, &mouse);
 
 		client_rect.center(mouse.pos);
 		client_rect.clamp_ip({0, 0, 400, 600});

@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 	while (rng) {
 		dt = clock.tick(60);
 
-		rng = events.process_events(&EVENT_KEYS);
+		rng = events.process_events();
 
 		if ((camera.get_permission_state() == Camera::APPROVED)) {
 			if (camera.is_new_frame_available()) {

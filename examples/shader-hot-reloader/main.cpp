@@ -198,7 +198,7 @@ int main(int argc, char *argv[]) {
 	while (rng) {
 		dt = clock.tick(60);
 
-		events.process_events(&EVENT_KEYS, nullptr, nullptr, event_handler);
+		events.process_events(nullptr, nullptr, nullptr, event_handler);
 
 		gui.update();
 

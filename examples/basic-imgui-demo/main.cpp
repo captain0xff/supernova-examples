@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 	while (running) {
 		dt = clock.tick(60);
 
-		running = events.process_events(&EVENT_KEYS, nullptr, nullptr, gui.get_event_handler());
+		running = events.process_events(nullptr, nullptr, nullptr, gui.get_event_handler());
 
 		gui.create_new_frame();
 

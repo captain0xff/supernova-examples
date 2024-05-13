@@ -32,21 +32,23 @@ int main(int argc, char* argv[]) {
 	bool running = true;
 	double dt;
 
-	EVENT_KEYS["UP"] = {SDLK_w, SDLK_UP};
-	EVENT_KEYS["QUIT"] = {SDLK_ESCAPE};
+	EventKeys event_keys = {
+		{"UP", {SDLK_w, SDLK_UP}},
+		{"QUIT", {SDLK_ESCAPE}}
+	};
 
 	while (running) {
 		dt = clock.tick(60);
 
-		running = events.process_events(&EVENT_KEYS);
+		running = events.process_events(&event_keys);
 
-		if (EVENT_KEYS["UP"].pressed)
+		if (event_keys["UP"].pressed)
 			SDL_Log("Pressed UP");
-		if (EVENT_KEYS["UP"].down)
+		if (event_keys["UP"].down)
 			SDL_Log("Held UP");
-		if (EVENT_KEYS["UP"].released)
+		if (event_keys["UP"].released)
 			SDL_Log(" Released UP");
-		if (EVENT_KEYS["QUIT"].pressed)
+		if (event_keys["QUIT"].pressed)
 			running = false;
 
 		renderer.clear(WHITE);

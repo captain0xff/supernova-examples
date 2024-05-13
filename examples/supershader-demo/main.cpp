@@ -34,14 +34,16 @@ int main(int argc, char *argv[]) {
 		Shader("shader.vert", "rgb_shader.frag")
 	};
 	
-	EVENT_KEYS["NEXT"] = {SDLK_SPACE};
+	EventKeys event_keys = {
+		{"NEXT", {SDLK_SPACE}}
+	};
 
 	while (rng) {
 		dt = clock.tick(60);
 
-		rng = events.process_events(&EVENT_KEYS);
+		rng = events.process_events(&event_keys);
 
-		if (EVENT_KEYS["NEXT"].pressed) {
+		if (event_keys["NEXT"].pressed) {
 			c = (c + 1)%2;
 		}
 
