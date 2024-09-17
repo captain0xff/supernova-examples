@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 	double dt;
 
 	EventKeys event_keys = {
-		{"UP", {SDLK_w, SDLK_UP}},
+		{"UP", {SDLK_W, SDLK_UP}},
 		{"QUIT", {SDLK_ESCAPE}}
 	};
 

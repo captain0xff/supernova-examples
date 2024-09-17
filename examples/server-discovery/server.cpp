@@ -9,7 +9,8 @@ using namespace std;
 
 
 string server_discovery(const string keyword) {
-	DatagramSocket dscv_socket(2000);
+	DatagramSocket dscv_socket(2000, "239.255.255.250");
+	
 	Packet packet;
 
 	string msg;

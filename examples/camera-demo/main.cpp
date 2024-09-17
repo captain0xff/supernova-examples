@@ -8,7 +8,10 @@ using namespace std;
 
 
 int main(int argc, char *argv[]) {
-	Engine engine;
+	EngineArgs args;
+	args.sdl_init_flags |= SDL_INIT_CAMERA;
+
+	Engine engine(args);
 
 	Window window("Camera Demo", {800, 600});
 	Renderer renderer(window);

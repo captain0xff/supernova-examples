@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 	GLCanvas::set_attributes();
 
 	Window window("Shader Demo", {800, 600});
-	Renderer renderer(window, 0, "opengl");
+	Renderer renderer(window, "opengl");
 
 	Clock clock;
 	Events events;

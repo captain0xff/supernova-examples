@@ -12,13 +12,14 @@ void server_discovery(const string keyword) {
 	int enabled = 1;
 	DatagramSocket dscv_socket(0);
 	Packet packet;
-	Datagram datagram(2000, "255.255.255.255", packet);
+	Datagram datagram(2000, "239.255.255.250", packet);
 	
 	packet << keyword;
 
 	while (true) {
 		if (dscv_socket.get_state() == dscv_socket.READY) {
 			dscv_socket.send(datagram);
+			SDL_Log("sent");
 			break;
 		}
 	}

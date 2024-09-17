@@ -30,7 +30,7 @@ GUI::GUI(Window &window, Renderer &renderer): DebugGUI(window, renderer) {
 	io->IniFilename = NULL;
 	io->LogFilename = NULL;
 
-	SDL_StartTextInput();
+	SDL_StartTextInput(window.window.get());
 
 	strcpy(vert_buffer, DEFAULT_VERTEX_SHADER);
 	strcpy(frag_buffer, DEFAULT_FRAGMENT_SHADER);
@@ -167,7 +167,7 @@ int main(int argc, char *argv[]) {
 	Renderer renderer(window);
 
 	Window window2("Shader Hot Reloader", {800, 600});
-	Renderer renderer2(window2, 0, "opengl");
+	Renderer renderer2(window2, "opengl");
 
 	Clock clock;
 	Events events;
