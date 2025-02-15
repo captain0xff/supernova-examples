@@ -21,7 +21,7 @@ int main(int, char**) {
 	double dt, volume;
 
 	Font font("font.ttf", 30);
-	font.wrap_alignment(TTF_WRAPPED_ALIGN_CENTER);
+	font.wrap_alignment(TTF_HORIZONTAL_ALIGN_CENTER);
 	Texture static_text = font.create_text(renderer, "Font Example\nSDL Powered", GREEN);
 	Rect static_text_rect = static_text.get_rect();
 	static_text_rect.size(static_text_rect.size());

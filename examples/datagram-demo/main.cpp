@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
 	DatagramSocket server(2000), client(0);
 	Packet server_packet, client_packet;
-	Datagram dgram(2000, "127.0.0.1", client_packet);
+	Datagram dgram(2000, "localhost", client_packet);
 
 	Rect server_rect, client_rect;
 	server_rect = client_rect = {0, 0, 50, 50};
